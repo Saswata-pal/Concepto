@@ -1,0 +1,11 @@
+# Audio Service - Audio Generation
+fastapi==0.108.0
+uvicorn[standard]==0.25.0
+pydantic==2.5.3
+python-dotenv==1.0.0
+elevenlabs==0.2.27
+pydub==0.25.1
+boto3==1.34.11
+aiofiles==23.2.1
+httpx==0.26.0
+python-multipart==0.0.6

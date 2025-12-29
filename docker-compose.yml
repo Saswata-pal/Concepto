@@ -1,0 +1,110 @@
+version: '3.8'
+
+services:
+  # ==================== Databases ====================
+  postgres:
+    image: postgres:15-alpine
+    container_name: concepto-postgres
+    environment:
+      POSTGRES_DB: concepto
+      POSTGRES_USER: concepto_user
+      POSTGRES_PASSWORD: concepto_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/postgres/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - concepto-network
+
+  mongodb:
+    image: mongo:7
+    container_name: concepto-mongodb
+    environment:
+      MONGO_INITDB_DATABASE: concepto
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./database/mongodb/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
+    networks:
+      - concepto-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: concepto-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - concepto-network
+
+  # ==================== Message Queue ====================
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: concepto-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - concepto-network
+
+  # ==================== Storage ====================
+  minio:
+    image: minio/minio
+    container_name: concepto-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    networks:
+      - concepto-network
+
+  # ==================== Monitoring ====================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: concepto-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - concepto-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: concepto-grafana
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    ports:
+      - "3005:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+    networks:
+      - concepto-network
+
+networks:
+  concepto-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  mongodb_data:
+  redis_data:
+  rabbitmq_data:
+  minio_data:
+  prometheus_data:
+  grafana_data:
