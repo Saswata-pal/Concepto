@@ -2,12 +2,38 @@
 
 import { ArrowRight, Sparkles, Brain, Zap } from 'lucide-react';
 import Link from 'next/link';
+import { Particles } from '@/components/ui/particles';
+import { ShootingStars } from '@/components/ui/shooting-stars';
+import { StarsBackground } from '@/components/ui/stars-background';
 
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-gradient-to-br dark:from-slate-950 dark:via-purple-950 dark:to-slate-900 transition-colors duration-500">
             {/* Animated Grid Background */}
             <div className="absolute inset-0 bg-grid-pattern opacity-10" />
+
+            {/* Particles Effect */}
+            <Particles
+                className="absolute inset-0"
+                quantity={80}
+                ease={80}
+                color="#a855f7"
+                refresh={false}
+            />
+
+            {/* Shooting Stars & Stars Background (Dark Mode Only) */}
+            <div className="hidden dark:block absolute inset-0">
+                <ShootingStars
+                    starColor="#9E00FF"
+                    trailColor="#2EB9DF"
+                    minSpeed={10}
+                    maxSpeed={20}
+                />
+                <StarsBackground
+                    starDensity={0.0002}
+                    twinkleProbability={0.8}
+                />
+            </div>
 
             {/* Circular Path Animated Elements */}
             <div className="absolute inset-0 overflow-hidden">
@@ -51,24 +77,24 @@ export default function Hero() {
 
                     {/* Main Headline with animated gradient */}
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-                        <span className="block text-white drop-shadow-2xl">Learning,</span>
-                        <span className="block mt-2 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_auto]">
+                        <span className="block text-gray-900 dark:text-white drop-shadow-2xl transition-colors">Learning,</span>
+                        <span className="block mt-2 bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 dark:from-purple-400 dark:via-pink-400 dark:to-cyan-400 bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_auto]">
                             Reimagined for Every Mind
                         </span>
                     </h1>
 
                     {/* Subheadline with enhanced styling */}
-                    <p className="max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl text-gray-300 text-accessible leading-relaxed">
-                        Concepto is a <strong className="text-white font-bold">conceptual education ecosystem</strong> designed to adapt to how different humans learn—through{' '}
-                        <span className="text-purple-400 font-semibold">sight</span>,{' '}
-                        <span className="text-pink-400 font-semibold">sound</span>,{' '}
-                        <span className="text-blue-400 font-semibold">structure</span>,{' '}
-                        <span className="text-cyan-400 font-semibold">pace</span>, and{' '}
-                        <span className="text-violet-400 font-semibold">cognition</span>.
+                    <p className="max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl text-gray-800 dark:text-gray-300 text-accessible leading-relaxed transition-colors">
+                        Concepto is a <strong className="text-gray-900 dark:text-white font-bold transition-colors">conceptual education ecosystem</strong> designed to adapt to how different humans learn—through{' '}
+                        <span className="text-purple-700 dark:text-purple-400 font-semibold transition-colors">sight</span>,{' '}
+                        <span className="text-pink-700 dark:text-pink-400 font-semibold transition-colors">sound</span>,{' '}
+                        <span className="text-blue-700 dark:text-blue-400 font-semibold transition-colors">structure</span>,{' '}
+                        <span className="text-cyan-700 dark:text-cyan-400 font-semibold transition-colors">pace</span>, and{' '}
+                        <span className="text-violet-700 dark:text-violet-400 font-semibold transition-colors">cognition</span>.
                     </p>
 
                     {/* Vision Statement */}
-                    <p className="max-w-2xl mx-auto text-base md:text-lg text-gray-400 italic">
+                    <p className="max-w-2xl mx-auto text-base md:text-lg text-gray-700 dark:text-gray-400 italic transition-colors">
                         Imagining a future where accessibility is not an add-on, but the foundation.
                     </p>
 
@@ -95,17 +121,17 @@ export default function Hero() {
 
                     {/* Trust Indicators with glassmorphism */}
                     <div className="pt-12 flex flex-wrap items-center justify-center gap-6">
-                        <div className="flex items-center space-x-2 px-4 py-2 bg-white/5 backdrop-blur-xl rounded-full border border-white/10">
-                            <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.5)]" />
-                            <span className="text-sm text-gray-300 font-medium">Concept Initiative</span>
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-white/5 backdrop-blur-xl rounded-full border border-gray-200 dark:border-white/10 transition-colors">
+                            <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.5)]" />
+                            <span className="text-sm text-gray-800 dark:text-gray-300 font-medium transition-colors">Concept Initiative</span>
                         </div>
-                        <div className="flex items-center space-x-2 px-4 py-2 bg-white/5 backdrop-blur-xl rounded-full border border-white/10">
-                            <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
-                            <span className="text-sm text-gray-300 font-medium">Accessibility-First Design</span>
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-white/5 backdrop-blur-xl rounded-full border border-gray-200 dark:border-white/10 transition-colors">
+                            <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
+                            <span className="text-sm text-gray-800 dark:text-gray-300 font-medium transition-colors">Accessibility-First Design</span>
                         </div>
-                        <div className="flex items-center space-x-2 px-4 py-2 bg-white/5 backdrop-blur-xl rounded-full border border-white/10">
-                            <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
-                            <span className="text-sm text-gray-300 font-medium">Human-Centered AI</span>
+                        <div className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-white/5 backdrop-blur-xl rounded-full border border-gray-200 dark:border-white/10 transition-colors">
+                            <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
+                            <span className="text-sm text-gray-800 dark:text-gray-300 font-medium transition-colors">Human-Centered AI</span>
                         </div>
                     </div>
                 </div>

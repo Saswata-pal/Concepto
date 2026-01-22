@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
+import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -28,7 +29,7 @@ export default function Navbar() {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? 'glass-effect shadow-lg'
+                ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg shadow-lg border-b border-gray-200 dark:border-gray-800'
                 : 'bg-transparent'
                 }`}
         >
@@ -53,59 +54,87 @@ export default function Navbar() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-purple-600 transition-colors rounded-lg hover:bg-purple-50 focus-visible-ring"
+                                className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20 focus-visible-ring"
                             >
                                 {link.label}
                             </Link>
                         ))}
                     </div>
 
-                    {/* CTA Button */}
+                    {/* CTA Button & Theme Toggler */}
                     <div className="hidden lg:flex items-center space-x-4">
+                        <AnimatedThemeToggler
+                            className="p-2.5 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/15 hover:border-purple-400/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] transition-all focus-visible-ring"
+                        />
                         <Link
-                            href="#explore"
+                            href="/auth/signin"
+                            className="px-5 py-2.5 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all focus-visible-ring"
+                        >
+                            Sign In
+                        </Link>
+                        <Link
+                            href="/auth/register"
                             className="px-6 py-2.5 gradient-primary text-white font-medium rounded-lg hover:shadow-lg hover:scale-105 transition-all focus-visible-ring"
                         >
-                            Explore the Concept
+                            Get Started
                         </Link>
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors focus-visible-ring"
-                        aria-label="Toggle menu"
-                    >
-                        {isMobileMenuOpen ? (
-                            <X className="w-6 h-6 text-gray-700" />
-                        ) : (
-                            <Menu className="w-6 h-6 text-gray-700" />
-                        )}
-                    </button>
+                    {/* Mobile Menu Button & Theme Toggler */}
+                    <div className="lg:hidden flex items-center space-x-2">
+                        <AnimatedThemeToggler
+                            className="p-2 rounded-lg bg-slate-200/80 dark:bg-white/10 backdrop-blur-xl border border-slate-300/50 dark:border-white/20 text-gray-700 dark:text-white hover:bg-slate-300/80 dark:hover:bg-white/15 transition-colors focus-visible-ring"
+                        />
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible-ring"
+                            aria-label="Toggle menu"
+                        >
+                            {isMobileMenuOpen ? (
+                                <X className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                            ) : (
+                                <Menu className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                            )}
+                        </button>
+                    </div>
                 </div>
             </div>
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-                <div className="lg:hidden glass-effect border-t border-gray-200">
+                <div className="lg:hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-gray-200 dark:border-gray-700">
                     <div className="px-4 py-4 space-y-2">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-colors focus-visible-ring"
+                                className="block px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-colors focus-visible-ring"
                             >
                                 {link.label}
                             </Link>
                         ))}
-                        <Link
-                            href="#explore"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="block px-4 py-3 gradient-primary text-white font-medium rounded-lg text-center hover:shadow-lg transition-all focus-visible-ring"
-                        >
-                            Explore the Concept
-                        </Link>
+                        <div className="flex items-center gap-2">
+                            <AnimatedThemeToggler
+                                className="flex-1 px-4 py-3 rounded-lg bg-slate-200/80 dark:bg-white/10 backdrop-blur-xl border border-slate-300/50 dark:border-white/20 text-gray-700 dark:text-white hover:bg-slate-300/80 dark:hover:bg-white/15 hover:border-purple-400/50 transition-all focus-visible-ring flex items-center justify-center"
+                            />
+                            <div className="flex flex-col gap-2">
+                                <Link
+                                    href="/auth/signin"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="px-4 py-3 text-gray-700 dark:text-gray-300 font-medium rounded-lg text-center border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all focus-visible-ring"
+                                >
+                                    Sign In
+                                </Link>
+                                <Link
+                                    href="/auth/register"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="px-4 py-3 gradient-primary text-white font-medium rounded-lg text-center hover:shadow-lg transition-all focus-visible-ring"
+                                >
+                                    Get Started
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}

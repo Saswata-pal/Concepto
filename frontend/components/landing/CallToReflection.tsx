@@ -1,10 +1,24 @@
 'use client';
 
 import { MessageCircle, Mail } from 'lucide-react';
+import { ShootingStars } from '@/components/ui/shooting-stars';
+import { StarsBackground } from '@/components/ui/stars-background';
 
 export default function CallToReflection() {
     return (
         <section className="py-20 md:py-32 bg-gradient-to-br from-purple-600 via-pink-600 to-blue-600 relative overflow-hidden">
+            {/* Shooting Stars & Stars Background */}
+            <ShootingStars
+                starColor="#FFFFFF"
+                trailColor="#E0B0FF"
+                minSpeed={15}
+                maxSpeed={25}
+            />
+            <StarsBackground
+                starDensity={0.0003}
+                twinkleProbability={0.9}
+            />
+
             {/* Animated Background */}
             <div className="absolute inset-0 opacity-20">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-float" />

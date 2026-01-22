@@ -3,6 +3,7 @@
 import Navbar from '@/components/landing/Navbar';
 import Hero from '@/components/landing/Hero';
 import Vision from '@/components/landing/Vision';
+import ConceptModulesSticky from '@/components/landing/ConceptModulesSticky';
 import Learners from '@/components/landing/Learners';
 import WhyConcepto from '@/components/landing/WhyConcepto';
 import FutureRoadmap from '@/components/landing/FutureRoadmap';
@@ -17,6 +18,7 @@ export default function ConceptoLanding() {
             <Navbar />
             <Hero />
             <Vision />
+            <ConceptModulesSticky />
             <Learners />
             <WhyConcepto />
             <FutureRoadmap />

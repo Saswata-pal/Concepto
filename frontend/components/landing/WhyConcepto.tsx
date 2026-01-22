@@ -77,69 +77,6 @@ export default function WhyConcepto() {
                         );
                     })}
                 </div>
-
-                {/* Comparison Section */}
-                <div className="max-w-5xl mx-auto">
-                    <div className="glass-effect rounded-2xl p-8 md:p-12 border-2 border-purple-200">
-                        <h3 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-12">
-                            Traditional vs. Concepto Approach
-                        </h3>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {/* Traditional Approach */}
-                            <div className="space-y-4">
-                                <h4 className="text-xl font-bold text-gray-700 mb-4 flex items-center">
-                                    <span className="w-3 h-3 bg-red-500 rounded-full mr-3" />
-                                    Traditional Platforms
-                                </h4>
-                                <div className="space-y-3 text-gray-600">
-                                    <p className="flex items-start">
-                                        <span className="mr-2">❌</span>
-                                        <span>One format for all learners</span>
-                                    </p>
-                                    <p className="flex items-start">
-                                        <span className="mr-2">❌</span>
-                                        <span>Accessibility as an afterthought</span>
-                                    </p>
-                                    <p className="flex items-start">
-                                        <span className="mr-2">❌</span>
-                                        <span>Fixed pacing and structure</span>
-                                    </p>
-                                    <p className="flex items-start">
-                                        <span className="mr-2">❌</span>
-                                        <span>Assumes all minds work the same</span>
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Concepto Approach */}
-                            <div className="space-y-4">
-                                <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                                    <span className="w-3 h-3 bg-green-500 rounded-full mr-3" />
-                                    Concepto's Vision
-                                </h4>
-                                <div className="space-y-3 text-gray-700">
-                                    <p className="flex items-start">
-                                        <span className="mr-2">✅</span>
-                                        <span className="font-medium">Adaptive multi-modal learning</span>
-                                    </p>
-                                    <p className="flex items-start">
-                                        <span className="mr-2">✅</span>
-                                        <span className="font-medium">Accessibility as foundation</span>
-                                    </p>
-                                    <p className="flex items-start">
-                                        <span className="mr-2">✅</span>
-                                        <span className="font-medium">Learner-controlled experience</span>
-                                    </p>
-                                    <p className="flex items-start">
-                                        <span className="mr-2">✅</span>
-                                        <span className="font-medium">Celebrates cognitive diversity</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     );
