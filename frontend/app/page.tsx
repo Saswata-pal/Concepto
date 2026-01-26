@@ -1,31 +1,57 @@
 'use client';
 
-import Navbar from '@/components/landing/Navbar';
+import Navigation from '@/components/landing/Navigation';
 import Hero from '@/components/landing/Hero';
-import Vision from '@/components/landing/Vision';
-import ConceptModulesSticky from '@/components/landing/ConceptModulesSticky';
-import Learners from '@/components/landing/Learners';
-import WhyConcepto from '@/components/landing/WhyConcepto';
-import FutureRoadmap from '@/components/landing/FutureRoadmap';
+import ProblemStatement from '@/components/landing/ProblemStatement';
+import HowItWorks from '@/components/landing/HowItWorks';
+import FeatureGrid from '@/components/landing/FeatureGrid';
+import PersonaShowcase from '@/components/landing/PersonaShowcase';
+import PlatformComparison from '@/components/landing/PlatformComparison';
 import FAQ from '@/components/landing/FAQ';
-import TrustSection from '@/components/landing/TrustSection';
-import CallToReflection from '@/components/landing/CallToReflection';
 import Footer from '@/components/landing/Footer';
+import ProgressBar from '@/components/ui/ProgressBar';
+import ScrollToTop from '@/components/ui/ScrollToTop';
+import FloatingChat from '@/components/ui/FloatingChat';
+import { BackgroundLines } from '@/components/ui/background-lines';
 
 export default function ConceptoLanding() {
     return (
-        <main className="min-h-screen">
-            <Navbar />
-            <Hero />
-            <Vision />
-            <ConceptModulesSticky />
-            <Learners />
-            <WhyConcepto />
-            <FutureRoadmap />
-            <FAQ />
-            <TrustSection />
-            <CallToReflection />
-            <Footer />
+        <main className="min-h-screen bg-[#0f1729]">
+            <BackgroundLines className="w-full flex-col h-full">
+                {/* Progress Bar */}
+                <ProgressBar />
+
+                {/* Navigation */}
+                <Navigation />
+
+                {/* Hero Section */}
+                <Hero />
+
+                {/* Problem Statement */}
+                <ProblemStatement />
+
+                {/* How It Works */}
+                <HowItWorks />
+
+                {/* Feature Grid */}
+                <FeatureGrid />
+
+                {/* Persona Showcase */}
+                <PersonaShowcase />
+
+                {/* Platform Comparison */}
+                <PlatformComparison />
+
+                {/* FAQ */}
+                <FAQ />
+
+                {/* Footer */}
+                <Footer />
+
+                {/* Utility Components */}
+                <ScrollToTop />
+                <FloatingChat />
+            </BackgroundLines>
         </main>
     );
 }

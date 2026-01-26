@@ -20,7 +20,7 @@ export default function Navbar() {
 
     const navLinks = [
         { href: '#vision', label: 'Vision' },
-        { href: '#learners', label: 'Learners' },
+        { href: '#built-for-everyone', label: 'For Everyone' },
         { href: '#why-concepto', label: 'Why Concepto' },
         { href: '#roadmap', label: 'Future Roadmap' },
         { href: '#faq', label: 'FAQ' },
@@ -29,7 +29,7 @@ export default function Navbar() {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg shadow-lg border-b border-gray-200 dark:border-gray-800'
+                ? 'bg-slate-900/90 backdrop-blur-lg shadow-lg border-b border-white/10'
                 : 'bg-transparent'
                 }`}
         >

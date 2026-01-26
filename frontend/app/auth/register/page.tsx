@@ -102,7 +102,7 @@ export default function RegisterPage() {
                         </div>
                         <div className="relative flex justify-center text-sm">
                             <span className="px-4 bg-white dark:bg-slate-900 text-gray-500 dark:text-gray-400">
-                                Free forever • No credit card required
+                                Free forever 
                             </span>
                         </div>
                     </div>
