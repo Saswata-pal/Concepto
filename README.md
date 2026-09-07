@@ -160,9 +160,6 @@ docker-compose up
 
 ---
 
-## 📄 License
-
-[Your License Here]
 
 ---
 
